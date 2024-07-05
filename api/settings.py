@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'apps.patient',
-    'apps.patientConnector',
+    'apps.connectServices',
     'rest_framework',
 ]
 
@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'service_registrar.middleware.VerifyRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'api.urls'

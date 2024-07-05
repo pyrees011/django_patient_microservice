@@ -6,4 +6,5 @@ __pycache__/
 # env file
 .env
 
+patient_service
 

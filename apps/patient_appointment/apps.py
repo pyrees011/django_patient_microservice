@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ConnectservicesConfig(AppConfig):
+class PatientAppointmentConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'connectServices'
+    name = 'apps.patient_appointment'

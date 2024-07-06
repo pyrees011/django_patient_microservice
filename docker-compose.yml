@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     ports:
-      - ${SERVICE_PORT}:${RUN_SERVER_PORT}
+      - ${SERVICE_PORT}:${SERVICE_PORT}
     env_file:
       - .env
       

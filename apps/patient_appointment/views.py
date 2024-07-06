@@ -14,7 +14,7 @@ class PatientAppointmentView(APIView, ServiceAddressMixin):
         except Exception as exc:
             return self.response_from_exception(exc)
         
-        response = requests.get(f'{self.url}/api/appointment/{id}/')
+        response = requests.get(f'{self.url}/api/appointments/view/patient_appointments?patientid={id}')
         if response.status_code != 200:
             return JsonResponse(response.json(), status=response.status_code)
         return JsonResponse(response.json(), status=response.status_code)

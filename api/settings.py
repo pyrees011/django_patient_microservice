@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'service_registrar.middleware.VerifyRequestMiddleware',
+    # 'service_registrar.middleware.VerifyRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'api.urls'
@@ -84,12 +84,12 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': str(os.getenv('DB_NAME')),
         'USER': str(os.getenv('DB_USER')),
         'PASSWORD': str(os.getenv('DB_PASS')),
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'HOST': 'db',
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 

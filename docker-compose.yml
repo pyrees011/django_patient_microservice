@@ -1,23 +1,27 @@
 version: '3.8'
+
 services:
-  backend:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  db:
+    image: postgres:latest
+    container_name: patient-db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
     ports:
-      - 8000:8000
+      - "${DB_PORT}:5432"
     volumes:
-      - .:/app
+      - postgres-data:/var/lib/postgresql/data
+
+  patients:
+    build: .
+    container_name: ${SERVICE_NAME}
     depends_on:
       - db
-
-  db:
-    image: mysql:latest
-    restart: always
-    environment:
-      MYSQL_DATABASE: patient_service
-      MYSQL_ROOT_PASSWORD : root
-    volumes:
-      - .dbdata:/var/lib/mysql
     ports:
-      - 33066:3306
+      - ${SERVICE_PORT}:${RUN_SERVER_PORT}
+    env_file:
+      - .env
+      
+volumes:
+  postgres-data:
